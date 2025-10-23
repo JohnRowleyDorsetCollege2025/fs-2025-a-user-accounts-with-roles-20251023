@@ -22,6 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Components1\Pages\" />
+    <Folder Include="Components2\Pages\" />
     <Folder Include="Pages\" />
     <Folder Include="Shared\" />
   </ItemGroup>

@@ -10,4 +10,14 @@ I want a very simple .net core solution which demonstrates how to produce messag
 
 I am a c# student and I have been shown how to use Bogus to generate a list of people and render them into a blazor page. I have been asked to come up with six more examples of pages that mock different types of data - such as products. Can you give me 6 useful examples that I can recreate in blazor pages and generate the appropriate c# classes
 
-Generate a blazor  component with a filter which will use the MockData class and Patients method to render all the patients in a table when the component loads and use it in a new page called Patients
+Generate a blazor  component with a filter which will use the 
+MockData class and Patients method to render all the patients in a 
+table when the component loads and use it in a new page called Patients
+
+
+Generate a blazor  component with a filter which will use the 
+MockData.Hotels method to render all the hotels in a 
+table when the component loads and use it in a new page called Hotels. 
+The new component and the new page should be placed in the existing 
+Components directory and Pages directory respectively. 
+Do not used a Shared folder to store the component

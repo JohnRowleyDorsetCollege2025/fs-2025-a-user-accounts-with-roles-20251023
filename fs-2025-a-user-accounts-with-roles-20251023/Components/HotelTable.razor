@@ -1,0 +1,53 @@
+﻿@using fs_user_accounts.Data
+@using AppApp.Domain
+@using System.Globalization
+
+@if (hotels is null)
+{
+    <p><em>Loading hotels...</em></p>
+}
+else if (!hotels.Any())
+{
+    <p class="text-muted">No hotels found.</p>
+}
+else
+{
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th class="text-center">Stars</th>
+                <th class="text-end">Price</th>
+                <th class="text-center">Wifi</th>
+                <th class="text-center">Breakfast</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var h in hotels)
+            {
+                <tr>
+                    <td>@h.Name</td>
+                    <td>@h.City</td>
+                    <td class="text-center">@h.Stars</td>
+                    <td class="text-end">@h.PricePerNight.ToString("C", CultureInfo.CurrentCulture)</td>
+                    <td class="text-center">@((h.HasWifi) ? "✓" : "—")</td>
+                    <td class="text-center">@((h.HasBreakfast) ? "✓" : "—")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter]
+    public int Count { get; set; } = 25;
+
+    private List<Hotel>? hotels;
+
+    protected override void OnInitialized()
+    {
+        // Load hotels when the component initializes using the existing MockData factory.
+        hotels = MockData.Hotels(Count);
+    }
+}
