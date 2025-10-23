@@ -1,0 +1,45 @@
+@using fs_user_accounts.Data
+@using AppApp.Domain
+
+@if (patients is null)
+{
+    <p><em>Loading patients…</em></p>
+}
+else if (!patients.Any())
+{
+    <p><em>No patients available.</em></p>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in patients)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.FirstName</td>
+                    <td>@p.LastName</td>
+                    <td>@p.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Patient>? patients;
+
+    protected override void OnInitialized()
+    {
+        // Synchronously load mock data on component initialization
+        patients = MockData.Patients();
+    }
+}
